@@ -218,3 +218,100 @@ def show_ui():
 
 show_ui()
 ```
+Newer Version, Auto copy into new names. Try it below!
+
+```
+import maya.cmds as cmds
+from PySide2 import QtWidgets, QtCore, QtGui
+
+def format_as_python_list(obj_list, start_zero=True, fmt="Index_SM_P_Name"):
+    """Wraps names in quotes and brackets for direct pasting into Unreal's Python API."""
+    start_index = 0 if start_zero else 1
+    
+    # Header for the Python list
+    lines = ["new_names = ["]
+    
+    for i, obj in enumerate(obj_list):
+        idx = i + start_index
+        
+        # Construct the naming string based on format
+        if fmt == "Index_SM_P_Name":
+            name_str = f"{idx:02d}_SM_P_{obj}"
+        elif fmt == "Name (Index)":
+            name_str = f"{obj}_{idx:02d}"
+        else:
+            name_str = f"{idx:02d}_{obj}"
+            
+        # Add indentation and quotes
+        lines.append(f'    "{name_str}",')
+    
+    lines.append("]")
+    return "\n".join(lines)
+
+class UnrealBridgeUI(QtWidgets.QWidget):
+    def __init__(self):
+        super(UnrealBridgeUI, self).__init__()
+        self.setWindowTitle("Maya to Unreal: Copy List")
+        self.setFixedSize(300, 220)
+        
+        layout = QtWidgets.QVBoxLayout(self)
+
+        # Options
+        self.startZeroCB = QtWidgets.QCheckBox("Start at 00")
+        self.startZeroCB.setChecked(True)
+        layout.addWidget(self.startZeroCB)
+
+        self.formatMenu = QtWidgets.QComboBox()
+        self.formatMenu.addItems(["Index_SM_P_Name", "Name_Index", "Index_Name"])
+        layout.addWidget(QtWidgets.QLabel("Naming Format:"))
+        layout.addWidget(self.formatMenu)
+
+        layout.addSpacing(15)
+
+        # Action Buttons
+        btn_copy_mesh = QtWidgets.QPushButton("Copy Mesh List for Unreal")
+        btn_copy_mesh.setStyleSheet("background-color: #3d4c5c; height: 40px; font-weight: bold;")
+        btn_copy_mesh.clicked.connect(lambda: self.process_and_copy("mesh"))
+        layout.addWidget(btn_copy_mesh)
+
+        btn_copy_grp = QtWidgets.QPushButton("Copy Group List for Unreal")
+        btn_copy_grp.clicked.connect(lambda: self.process_and_copy("group"))
+        layout.addWidget(btn_copy_grp)
+
+    def process_and_copy(self, mode):
+        items = []
+        if mode == "mesh":
+            sel = cmds.ls(selection=True, dag=True, type="mesh")
+            if sel:
+                items = cmds.listRelatives(sel, parent=True, fullPath=False)
+        else:
+            sel = cmds.ls(selection=True, type="transform")
+            items = [t for t in sel if not cmds.listRelatives(t, shapes=True)]
+
+        if not items:
+            QtWidgets.QMessageBox.warning(self, "Selection Error", f"Please select at least one {mode}!")
+            return
+
+        # Generate the formatted string
+        formatted_list = format_as_python_list(
+            items, 
+            self.startZeroCB.isChecked(), 
+            self.formatMenu.currentText()
+        )
+
+        # Copy to clipboard
+        clipboard = QtWidgets.QApplication.clipboard()
+        clipboard.setText(formatted_list)
+        
+        # Feedback
+        print(f"// Copied {len(items)} items to clipboard for Unreal //")
+
+def show_ui():
+    global unrealBridgeWin
+    try: unrealBridgeWin.close()
+    except: pass
+    unrealBridgeWin = UnrealBridgeUI()
+    unrealBridgeWin.show()
+
+show_ui()
+```
