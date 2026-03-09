@@ -220,7 +220,7 @@ show_ui()
 ```
 Newer Version, Auto copy into new names. Try it below!
 
-```
+```ruby
 import maya.cmds as cmds
 from PySide2 import QtWidgets, QtCore, QtGui
 
