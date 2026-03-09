@@ -264,7 +264,7 @@ def generate_full_unreal_script(obj_list, start_zero=True, prefix="SM_P"):
 class UnrealScriptGenerator(QtWidgets.QWidget):
     def __init__(self):
         super(UnrealScriptGenerator, self).__init__()
-        self.setWindowTitle("Maya to Unreal Bridge")
+        self.setWindowTitle("Batch Rename UE v2.0")
         self.setFixedSize(300, 420)
         
         layout = QtWidgets.QVBoxLayout(self)
@@ -313,7 +313,7 @@ class UnrealScriptGenerator(QtWidgets.QWidget):
         
         layout.addStretch()
         
-        footer = QtWidgets.QLabel("Pastes directly into Unreal Python Editor")
+        footer = QtWidgets.QLabel("Batch Rename UE v2.0")
         footer.setStyleSheet("font-size: 9px; color: #888;")
         footer.setAlignment(QtCore.Qt.AlignCenter)
         layout.addWidget(footer)
