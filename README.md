@@ -3,7 +3,8 @@
 This script based Python Language to escalate renaming process using Maya to Unreal.
 By using index outliner maya and then export each naming mesh, apply this script by selected first and end index.
 
-Main Script for Batch Rename (Unreal)
+### Basic Script (Use in Unreal)
+Main Script for Batch Rename.
 ```ruby
 import unreal
 
@@ -29,8 +30,8 @@ for i, asset in enumerate(selected_assets):
         unreal.EditorAssetLibrary.rename_asset(old_path, new_path)
         unreal.log(f"Asset {old_path} change log {new_name}")
 ```
-
-Second Script for Export Naming Mesh (Maya)
+### Batch Rename UE v1.0 (Use in Maya)
+Second Script for Export Naming Mesh.
 ```ruby
 import maya.cmds as cmds
 from PySide2 import QtWidgets, QtCore, QtGui
@@ -218,6 +219,7 @@ def show_ui():
 
 show_ui()
 ```
+### Batch Rename UE v2.0 (Use in Maya)
 Newer Version, Auto copy into new names. Try it below!
 
 ```ruby
@@ -355,3 +357,6 @@ def show_ui():
 
 show_ui()
 ```
+### Comparison Effectivity
+Between each other method for Renaming Static Mesh in Unreal.
+<img width="1318" height="762" alt="image" src="https://github.com/user-attachments/assets/450d0c18-e5e9-4a3c-98ec-b2483d0731d2" />
