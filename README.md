@@ -30,7 +30,7 @@ for i, asset in enumerate(selected_assets):
         unreal.EditorAssetLibrary.rename_asset(old_path, new_path)
         unreal.log(f"Asset {old_path} change log {new_name}")
 ```
-### Batch Rename UE v1.0 (Use in Maya)
+### Batch Rename UE v1.0 (Use in Maya) - Old Method
 Second Script for Export Naming Mesh.
 ```ruby
 import maya.cmds as cmds
@@ -219,7 +219,7 @@ def show_ui():
 
 show_ui()
 ```
-### Batch Rename UE v2.0 (Use in Maya)
+### Batch Rename UE v2.0 (Use in Maya) - New Method
 Newer Version, Auto copy into new names. Try it below!
 
 ```ruby
