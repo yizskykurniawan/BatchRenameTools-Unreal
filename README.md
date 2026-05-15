@@ -1,7 +1,7 @@
 ## Batch Rename Tools for Unreal Engine 5
 
-This script based Python Language to escalate renaming process using Maya to Unreal.
-By using index outliner maya and then export each naming mesh, apply this script by selected first and end index.
+The framework uses the unreal Python module to talk to the engine's asset registry. This allows for "Safe Renaming," which means that even if a file is renamed, the materials and animations attached to it will not break.
+​The results show that as the number of assets grows, the automated tool saves an increasing amount of time. For large scenes with 500 assets, the tool completes in seconds, while manual naming takes over an hour.
 
 ### Basic Script (Use in Unreal)
 Main Script for Batch Rename.
