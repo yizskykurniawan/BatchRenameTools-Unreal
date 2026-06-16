@@ -233,7 +233,7 @@ Between each other method for Renaming Static Mesh in Unreal.
 All code and flow in this page, iterate by Yizsky Kurniawan.
 
 License Common Attribute. 
-Can used for commercial and personal used. 
+(Use for commercial / personal use)
 
 
 
