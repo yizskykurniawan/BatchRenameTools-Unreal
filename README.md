@@ -230,7 +230,7 @@ show_ui()
 Between each other method for Renaming Static Mesh in Unreal.
 <img width="1318" height="762" alt="image" src="https://github.com/user-attachments/assets/894f48e6-bc50-4bd9-b3b4-a313b13399dd" />
 
-All code in this page, iterate by Yizsky Kurniawan.
+All code and flow in this page, iterate by Yizsky Kurniawan.
 
 License Common Attribute. 
 Can used for commercial and personal used. 
