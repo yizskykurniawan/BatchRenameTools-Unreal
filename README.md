@@ -4,6 +4,9 @@ The framework uses the unreal Python module to talk to the engine's asset regist
 
 ​The results show that as the number of assets grows, the automated tool saves an increasing amount of time. For large scenes with 500 assets, the tool completes in seconds, while manual naming takes over an hour.
 
+<img width="323" height="592" alt="image" src="https://github.com/user-attachments/assets/7781b506-54d4-46d0-bbc8-a2e2740adea5" />
+
+
 ### Basic Script (Use in Unreal)
 Main Script for Batch Rename.
 ```ruby
