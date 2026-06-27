@@ -239,5 +239,4 @@ All code and flow in this page, iterate by Yizsky Kurniawan.
 License Creative Commons Attribution. 
 (Can use for commercial / personal use)
 
-
-
+Thank you!
