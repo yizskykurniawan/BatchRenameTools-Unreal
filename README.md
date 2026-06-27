@@ -4,6 +4,8 @@ The framework uses the unreal Python module to talk to the engine's asset regist
 
 ​The results show that as the number of assets grows, the automated tool saves an increasing amount of time. For large scenes with 500 assets, the tool completes in seconds, while manual naming takes over an hour.
 
+Quick preview :
+
 <img width="323" height="592" alt="image" src="https://github.com/user-attachments/assets/7781b506-54d4-46d0-bbc8-a2e2740adea5" />
 
 &nbsp;&nbsp;&nbsp;&nbsp;
@@ -234,9 +236,6 @@ show_ui()
 Between each other method for Renaming Static Mesh in Unreal.
 <img width="1318" height="762" alt="image" src="https://github.com/user-attachments/assets/894f48e6-bc50-4bd9-b3b4-a313b13399dd" />
 
-All code and flow in this page, iterate by Yizsky Kurniawan.
-
-License Creative Commons Attribution. 
-(Can use for commercial / personal use)
+Build withn Python + Maya + Unreal
 
 Thank you!
