@@ -236,7 +236,7 @@ Between each other method for Renaming Static Mesh in Unreal.
 All code and flow in this page, iterate by Yizsky Kurniawan.
 
 License Creative Commons Attribution. 
-(Use for commercial / personal use)
+(Can use for commercial / personal use)
 
 
 
