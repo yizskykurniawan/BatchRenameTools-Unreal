@@ -236,6 +236,6 @@ show_ui()
 Between each other method for Renaming Static Mesh in Unreal.
 <img width="1318" height="762" alt="image" src="https://github.com/user-attachments/assets/894f48e6-bc50-4bd9-b3b4-a313b13399dd" />
 
-Build withn Python + Maya + Unreal
+Build with Python + Maya + Unreal
 
 Thank you!
