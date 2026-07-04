@@ -1,5 +1,5 @@
 <p align="center">
- <h1 align="center"> Batch Rename Tools for Unreal Engine 5</h1>
+ <h1 align="center"> Batch Rename 2.1</h1>
  <p align="center"><strong>Automated asset organization, bridging the Maya-to-Unreal</strong></p>
 </p>
 
