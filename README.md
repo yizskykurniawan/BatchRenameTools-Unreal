@@ -1,10 +1,16 @@
-## Batch Rename Tools for Unreal Engine 5
+<p align="center">
+ <h1 align="center"> Batch Rename Tools for Unreal Engine 5</h1>
+ <p align="center"><strong>Automated asset organization, bridging the Maya-to-Unreal</strong></p>
+</p>
+
+---
+### About
 
 The framework uses the unreal Python module to talk to the engine's asset registry. This allows for "Safe Renaming," which means that even if a file is renamed, the materials and animations attached to it will not break.
 
 ​The results show that as the number of assets grows, the automated tool saves an increasing amount of time. For large scenes with 500 assets, the tool completes in seconds, while manual naming takes over an hour.
 
-Quick preview :
+### Quick preview :
 
 <img width="323" height="592" alt="image" src="https://github.com/user-attachments/assets/7781b506-54d4-46d0-bbc8-a2e2740adea5" />
 
