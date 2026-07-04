@@ -4,7 +4,7 @@
 </p>
 
 ---
-### About Batch Rename 2.1
+### About
 
 The framework uses the unreal Python module to talk to the engine's asset registry. This allows for "Safe Renaming," which means that even if a file is renamed, the materials and animations attached to it will not break.
 
