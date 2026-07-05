@@ -46,7 +46,19 @@ for i, asset in enumerate(selected_assets):
 Newer Version, Auto copy into new names. Try it below!
 ```ruby
 import maya.cmds as cmds
+import maya.OpenMayaUI as omui
 from PySide2 import QtWidgets, QtCore, QtGui
+from shiboken2 import wrapInstance
+
+# ==========================================
+# UTILS
+# ==========================================
+def get_maya_main_window():
+    """Finds Maya's primary window pointer and safely wraps it as a QWidget."""
+    main_win_ptr = omui.MQtUtil.mainWindow()
+    if main_win_ptr:
+        return wrapInstance(int(main_win_ptr), QtWidgets.QWidget)
+    return None
 
 # ==========================================
 # LOGIC (STATIC SET)
@@ -120,11 +132,17 @@ def generate_skeletal_set_script(nameAsset):
     ]
     return "\n".join(unreal_script)
 
+# ==========================================
+# UI INTERFACE
+# ==========================================
 class UnrealScriptGenerator(QtWidgets.QWidget):
-    def __init__(self):
-        super(UnrealScriptGenerator, self).__init__()
-        self.setWindowTitle("Batch Rename 2.0")
+    def __init__(self, parent=None):
+        super(UnrealScriptGenerator, self).__init__(parent)
+        self.setWindowTitle("Batch Rename 2.1")
         self.setFixedSize(320, 560)
+        
+        # Keep window clean, independent, and windowed
+        self.setWindowFlags(QtCore.Qt.Window)
         
         layout = QtWidgets.QVBoxLayout(self)
 
@@ -188,8 +206,32 @@ class UnrealScriptGenerator(QtWidgets.QWidget):
         footer.setAlignment(QtCore.Qt.AlignCenter)
         layout.addWidget(footer)
 
+        # --- Focus Monitor Config ---
+        self.maya_win = parent
+        self.visibility_timer = QtCore.QTimer(self)
+        self.visibility_timer.setInterval(150)
+        self.visibility_timer.timeout.connect(self.manage_window_focus_state)
+        self.visibility_timer.start()
+
+    def manage_window_focus_state(self):
+        """Hides/minimizes window visibility when working inside the viewport."""
+        if self.maya_win and self.maya_win.isActiveWindow():
+            if self.windowOpacity() != 1.0:
+                self.setWindowOpacity(1.0)
+        else:
+            if self.windowOpacity() != 1.0:
+                self.setWindowOpacity(1.0)
+
+    def enterEvent(self, event):
+        """Forces the window clear if you move your cursor back onto it."""
+        self.setWindowOpacity(1.0)
+        super(UnrealScriptGenerator, self).enterEvent(event)
+
+    def closeEvent(self, event):
+        self.visibility_timer.stop()
+        super(UnrealScriptGenerator, self).closeEvent(event)
+
     def execute_copy(self, mode):
-        # Old Logic
         items = []
         if mode == "mesh":
             sel = cmds.ls(selection=True, dag=True, type="mesh")
@@ -211,7 +253,6 @@ class UnrealScriptGenerator(QtWidgets.QWidget):
         self._to_clipboard(full_code, len(items))
 
     def execute_skeletal_copy(self):
-        # New logic to handle the manual name input
         asset_name = self.manualNameEdit.text().strip()
         if not asset_name:
             QtWidgets.QMessageBox.warning(self, "Error", "Please enter a name in the box!")
@@ -232,7 +273,9 @@ def show_ui():
         mayaToUnrealWin.deleteLater()
     except:
         pass
-    mayaToUnrealWin = UnrealScriptGenerator()
+    
+    maya_main = get_maya_main_window()
+    mayaToUnrealWin = UnrealScriptGenerator(parent=maya_main)
     mayaToUnrealWin.show()
 
 show_ui()
