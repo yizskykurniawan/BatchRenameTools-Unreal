@@ -3,7 +3,6 @@
  <p align="center"><strong>Automated asset organization, bridging the Maya-to-Unreal</strong></p>
 </p>
 
----
 ### About
 
 The framework uses the unreal Python module to talk to the engine's asset registry. This allows for "Safe Renaming," which means that even if a file is renamed, the materials and animations attached to it will not break.
@@ -242,6 +241,8 @@ show_ui()
 Between each other method for Renaming Static Mesh in Unreal.
 <img width="1318" height="762" alt="image" src="https://github.com/user-attachments/assets/894f48e6-bc50-4bd9-b3b4-a313b13399dd" />
 
-Build with Python + Maya + Unreal
 
-Thank you!
+<p align="center">
+ <p align="center">Build with Python + Maya + Unreal</p>
+ <p align="center">Thank you!</p>
+</p>
